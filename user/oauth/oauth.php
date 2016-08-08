@@ -18,7 +18,7 @@ if(isset( $_POST['stuNum'])) {
 				if( $_SESSION['haveBind']==true )
 					$sql = "update `stu_info` set `name`='{$name}',`snum`='{$stuNum}', `pw`='{$pw}' where `uid`='{$uid}'";
 				else
-					$sql = "insert into `stu_info` (`uid`, `name`,`snum` ,`pw`) values ('{$uid}', '{$name}', '{$stuNum}', '{$pw}' )";
+					$sql = "insert into `stu_info` (`uid`, `name`,`snum` ,`pw`) values ('{$uid}', '{$name}', '{$stuNum}', '{$pw}' ) ON DUPLICATE KEY UPDATE `snum`='{$stuNum}',`pw`='{$pw}' ";
 				$r = $wxdb->query($sql);
 				if( !$r ) 
 					throw new CURDException("插入或新绑定信息失败", "服务器出错", mysql_error($wxdb->link)."SQL: ".$sql); 

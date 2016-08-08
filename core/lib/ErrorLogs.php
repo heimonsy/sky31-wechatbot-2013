@@ -41,7 +41,7 @@ class ErrorLogs
 	 */
 	public static function writeToFile($uid, $file, $line, $msg, $errorCode, $sqlerror) {
 		$f = fopen(BASE_PATH."/logs/".self::getDate().".php", "a+");
-		fwrite($f, "$uid , $file, $line, $msg, $errorCode, $sqlerror\r\n");
+		fwrite($f, $_SERVER['REQUEST_URI'].", $uid , $file, $line, $msg, $errorCode, $sqlerror\r\n");
 		fclose($f);
 	}
 	

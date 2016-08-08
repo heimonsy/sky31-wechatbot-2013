@@ -28,11 +28,10 @@ if( $method=="newnums" ){
 	else
 		echo json_encode( array("lastid"=>$_SESSION['lastid'], 'nums'=>count( $res ), 'msgs'=>$res) );
 	
-}else if( $method == "cho" ){
+}else if( $method == "userlist" ){
 	//echo "fffff";
 	$res = getUserInfo( $sid, 1);
-	srand(time());
-	$cn = rand(0, count($res)-1);
+	$cn = count($res);
 	if( $res==NULL )
 		echo json_encode(array("nums"=>$cn,'msgs'=>array()));
 	else

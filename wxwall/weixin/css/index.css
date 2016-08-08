@@ -76,7 +76,7 @@ a:hover{text-decoration:underline;}
 	display:block;	
 	width:125px;
 	height:80px;
-	background-image:url(../images/s.jpg);
+	
 }
 .jiang{
 	background-image:url(../images/jiang_bg.png);
@@ -86,6 +86,14 @@ a:hover{text-decoration:underline;}
 	margin-top:60px;
 	line-height:45px;
 	position:relative;
+}
+.load_info{
+	width:609px;
+	padding-left:10px;
+	height:120px; padding-top:86px;
+	line-height:50px;
+	font-size:21px;
+	text-align:center;
 }
 #jiang_pg{
 	background-image:url(../images/head.png);
@@ -177,7 +185,8 @@ a:hover{text-decoration:underline;}
 .end{
 	font-size:18px;
 	color:#FFF;
-	text-align:center;
+	text-align:left;
+	text-indent:6px;
 	line-height:35px;
 	background-image:url(../images/end.jpg);
 	width:800px;
@@ -202,6 +211,8 @@ a:hover{text-decoration:underline;}
 .butt{
 	width: 134px;
 	height: 50px;
+	line-height:50px;
+	text-align:left;
 	position: absolute;
 	left: 520px;
 	top: 259px;

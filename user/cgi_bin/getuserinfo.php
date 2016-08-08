@@ -1,6 +1,6 @@
 <?php
 include "../../core/include/common.php";
-
+error_reporting(E_ALL|E_NOTICE);
 
 if(isset($_GET['mid']))
 	$mid = $_GET['mid'];

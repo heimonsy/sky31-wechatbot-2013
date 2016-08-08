@@ -6,6 +6,7 @@ var interval = "";
 var userlist = [];
 var ctimes=0;
 
+
 $(document).ready(function(e) {
 	
 	msgList = jQuery.parseJSON( $("#json-msgList").html() );

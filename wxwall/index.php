@@ -3,7 +3,7 @@
 session_start();
 header("Content-type: text/html; charset=utf-8");
 if(isset($_POST['pw'])){
-	if($_POST['pw'] == "ceo@sky31.com") {
+	if($_POST['pw'] == "972551578") {
 		$_SESSION['admin']="ADMIN";
 		header("Location:subject.php");
 	}
@@ -11,6 +11,6 @@ if(isset($_POST['pw'])){
 ?>
 
 <form action="" method="post">
-	<input type="text" name="pw" value="" />
+	<input type="password" name="pw" value="" />
 	<input type="submit" name="submit" value="提交" />
 </form>

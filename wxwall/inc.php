@@ -54,6 +54,14 @@ function setTag( $rsid,$tag)
 	return $r;
 }
 
+function countMsgNums($sid,$tag){
+	$sql = "select count(*) from `wx_rsubmsg` where `sid`='{$sid}' and `tag`='{$tag}'";
+	$wxdb = MyDB::getWxdb();
+	$r = $wxdb->query($sql);
+	$r = mysql_fetch_array($r);
+	return $r[0];
+}
+
 function getNextOne($cp , $sid, $tag ,$pageSize)
 {
 	$sql ="select `wx_user`.`uid`,`nname` ,`rsid`,`cnt`,`tag`,`wx_rsubmsg`.`time`,`sum`,`lastid` from `wx_rsubmsg`
@@ -72,11 +80,11 @@ where `sid`='{$sid}' and `tag`='{$tag}' order by `rsid` desc limit ".($cp*$pageS
 	return $r;
 }
 
-function getByLast( $sid, $tag ,$lastid)
+function getByLast( $sid, $tag ,$lastid, $sort='desc')
 {
 	$sql ="select * from (select `wx_user`.`uid`, `nname`,`rsid`,`cnt`,`tag`,`wx_rsubmsg`.`time` from `wx_rsubmsg`
 inner join `wx_user` on `wx_rsubmsg`.`uid`=`wx_user`.`uid`
-where `sid`='{$sid}' and `tag`='{$tag}' and `rsid`>'{$lastid}' limit 15) as `cc` order by `rsid` desc";
+where `sid`='{$sid}' and `tag`='{$tag}' and `rsid`>'{$lastid}') as `cc` order by `rsid` {$sort}";
 	$wxdb = MyDB::getWxdb();
 	$r = $wxdb->query($sql);
 	if( !$r ) exit( mysql_error() );
@@ -92,7 +100,7 @@ where `sid`='{$sid}' and `tag`='{$tag}' and `rsid`>'{$lastid}' limit 15) as `cc`
 
 function getUserInfo($sid,$tag)
 {
-	$sql = "select `uid`,`nname`,`wxn`,`fid` from `wx_user` where `uid` in (select `uid` from `wx_rsubmsg` where `sid`='{$sid}' and `tag` ='{$tag}') ORDER BY rand() limit 25";
+	$sql = "select DISTINCT `wx_rsubmsg`.`uid`,`nname`,`wxn` from `wx_user`,`wx_rsubmsg` where `wx_rsubmsg`.`sid`='{$sid}' and `wx_user`.`uid`=`wx_rsubmsg`.`uid`";
 	
 	$wxdb = MyDB::getWxdb();
 	$r = $wxdb->query($sql);
@@ -100,9 +108,10 @@ function getUserInfo($sid,$tag)
 	$res = NULL;
 
 	while( ($m=mysql_fetch_assoc($r))!=NULL ){
+		//echo $m['wxn']."\n";
+		if($m['nname']==NULL) continue;
 		$m['purl'] = UserInfoTool::getHeadPic($m['uid']);
 		$res[] = $m;
-
 	}
 	return $res;
 }
