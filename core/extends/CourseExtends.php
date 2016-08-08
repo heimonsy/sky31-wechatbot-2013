@@ -25,7 +25,7 @@ class CourseExtends extends BaseExtends
 				$bind   = BindExtends::haveBind($this->user->uid);
 				
 				$course = Course::getCourseFromXtu(
-						Encodes::decode($bind['snum']), Encodes::decode($bind['pw']), $this->user->uid);
+						Encodes::decode(stripcslashes($bind['snum'])), Encodes::decode(stripcslashes($bind['pw'])), $this->user->uid);
 				if($course) {
 					Course::updateCourse($this->user->uid, $course['class']);
 					$content = "更新成功\n";

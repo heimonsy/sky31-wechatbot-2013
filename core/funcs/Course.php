@@ -123,12 +123,12 @@ class Course
 	 * @throws OtherException
 	 * @return boolean
 	 */
-	public static function getCourseFromXtu($userName,$password, $uid)
+	public static function getCourseFromXtu($userName, $password, $uid)
 	{
 		$ch = new MyUrlFetch();
 	
 		$fields = array(
-				'username'=>$userName, 'password'=>$password,
+				'username'=>$userName, 'password'=>trim($password),
 				'identity'=>'student', 'role'=>'1');
 		$ch->setPostArray($fields);
 		$str = iconv("GBK", "UTF-8//IGNORE",
