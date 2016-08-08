@@ -53,6 +53,6 @@ function __autoload($className) {
 }
 
 set_error_handler("my_error_handler", E_ALL | E_ERROR);
-register_shutdown_function("shutdown_error");
+//register_shutdown_function("shutdown_error");
 set_exception_handler("uncatched_exception_record");
 

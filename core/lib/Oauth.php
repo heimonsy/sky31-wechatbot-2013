@@ -97,6 +97,6 @@ class Oauth
 	
 	public static function getCwBindUrl($uid) {
 		$oauth = self::getOauth($uid);
-		return OAUTH_URL."?oa=".$oauth;
+		return CW_OAUTH_URL."?oa=".$oauth;
 	}
 }

@@ -24,7 +24,7 @@ class WxService
 		//将接收到的消息添加到数据库
 		$mid = $this->addPostMsg($postStr);
 		$this->receivedMsgMid = $mid;
-		
+		/*
 		if($this->user->fakeid == 0 && $this->receivedMsg->msgType == MSG_TEXT) {
 			$ch = curl_init( "http://wx.sky31.com/getuserinfo.php?mid=".$mid );
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -37,7 +37,7 @@ class WxService
 			//echo $errno." ".$errmsg;
 			//fclose($fp);
 			
-		}
+		}*/
 	}
 
 	/**
@@ -86,7 +86,7 @@ class WxService
 	{
 		global $ROUTER_TABLE;
 		$router = new Router($this->user, $this->receivedMsg, $this->user->status);
-		$this->responseMsg = $router->router($ROUTER_TABLE);
+		$this->responseMsg = $router->findRouter($ROUTER_TABLE);
 		
 		return $this->receivedMsg == NULL ? false : true;
 	}

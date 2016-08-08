@@ -27,7 +27,7 @@ class ErrorLogs
 		$sql =  "insert into `wx_logs` values(NULL, '{$uid}', '{$file}', '{$line}', '{$msg}', '{$errorCode}', '{$time}')";
 		$db = MyDB::getWxdb();
 		$r  = $db->query($sql);
-		if(!$r) self::writeToFile($uid, $file, $line, $msg, $errorCode);
+		if(!$r) self::writeToFile($uid, $file, $line, $msg, $errorCode, mysql_error()." sql: ".$sql);
 		
 		return $r == false ? false : true;
 	}
@@ -39,9 +39,9 @@ class ErrorLogs
 	 * @param string $msg
 	 * @param int $errorCode
 	 */
-	public static function writeToFile($uid, $file, $line, $msg, $errorCode) {
+	public static function writeToFile($uid, $file, $line, $msg, $errorCode, $sqlerror) {
 		$f = fopen(BASE_PATH."/logs/".self::getDate().".php", "a+");
-		fwrite($f, "$uid , $file, $line, $msg, $errorCode\r\n");
+		fwrite($f, "$uid , $file, $line, $msg, $errorCode, $sqlerror\r\n");
 		fclose($f);
 	}
 	

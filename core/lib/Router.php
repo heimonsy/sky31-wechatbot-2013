@@ -13,7 +13,7 @@ class Router {
 	 * 进行路由选择的函数
 	 * @param array 路由表，数组，元素为函数
 	 */
-	public function router($routers) {
+	public function findRouter($routers) {
 		$matchs = array();
 		//先判断用户所在的状态
 		if($this->user->status !=""){
@@ -34,10 +34,12 @@ class Router {
 		} else {
 			foreach ($routers as $extends)
 			if(class_exists($extends)) {
+				$todo = new $extends($this->user, $this->receivedMsg);
 				if(preg_match(
-					$extends::getKeyWordPatterns(), $this->receivedMsg->content, $matchs)) {
+					$todo->getKeyWordPatterns(), $this->receivedMsg->content, $matchs)){
+					//$extends::getKeyWordPatterns(), $this->receivedMsg->content, $matchs)) {
 					//匹配到模式串
-					$todo = new $extends($this->user, $this->receivedMsg);
+					//$todo = new $extends($this->user, $this->receivedMsg);
 					//开始分析
 					$todo->analyse($matchs);
 					$this->responseMsg = $todo->getResponseMsg();

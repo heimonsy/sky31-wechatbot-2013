@@ -2,7 +2,7 @@
 class HelpExtends extends BaseExtends
 {
 
-private $helpInfo = "翼宝很高兴能为小伙伴服务哦回复序号后的关键字即可了解相关信息。翼宝伴你左右，期待你的关注。（更多功能敬请期待 ^.^ ）。
+private $helpInfo = "翼宝很高兴能为小伙伴服务。翼宝伴你左右，期待你的关注。（更多功能敬请期待 ^.^ ）。
 ---------
 生活类
 【天气】
@@ -17,12 +17,15 @@ private $helpInfo = "翼宝很高兴能为小伙伴服务哦回复序号后的�
 【成绩】成绩查询
 ---------
 新生季
-正在制作中
+【生活贴士】
+【学院介绍】
+【六大组织】
 ---------
-回复方括号内的文字即可获得服务。"; 
+回复 方括号 内的文字即可获得服务。
+回复 帮助 获取帮助消息。"; 
 	
 	public static function getKeyWordPatterns() {
-		return "/^(帮助|h|help)$/i";
+		return "/^(帮助|h|help|subscribe)$/i";
 	}
 	
 	public function analyse($matchs=NULL) {

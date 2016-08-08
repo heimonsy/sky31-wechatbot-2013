@@ -16,7 +16,9 @@ class MyDB
 	
 	public static function close()
 	{
-		if(self::$wxdb != NULL)
+		if(self::$wxdb != NULL){
 			self::$wxdb->close();
+			self::$wxdb = NULL;
+		}
 	} 
 }

@@ -248,14 +248,14 @@ function uncatched_exception_record($e) {
 }
 
 function my_error_handler($errno, $errstr, $errfile, $errline) {
-	$error_name = array(E_ERROR=>"FATAL ERROR:",E_WARNING=>"WARNING:", E_NOTICE=>"E_NOTICE", E_PARSE=>"PARSE ERROR:", E_DEPRECATED=>"Run time notice:");
+	$error_name = array(E_ERROR=>"FATAL ERROR:",E_WARNING=>"WARNING:", E_NOTICE=>"E_NOTICE", E_PARSE=>"PARSE ERROR:");
 	ErrorLogs::writeToLog("my_error_handler", $errfile, $errline, $error_name[$errno]." , ".$errstr, ErrorLogs::FATAL_ERROR);
 	sendSorry();
 }
 
 function shutdown_error() {
 
-	$error_name = array(E_ERROR=>"FATAL ERROR:",E_WARNING=>"WARNING:", E_NOTICE=>"E_NOTICE", E_PARSE=>"PARSE ERROR:", E_DEPRECATED=>"Run time notice:", E_STRICT=>"E_STRICT:");
+	$error_name = array(E_ERROR=>"FATAL ERROR:",E_WARNING=>"WARNING:", E_NOTICE=>"E_NOTICE", E_PARSE=>"PARSE ERROR:", E_STRICT=>"E_STRICT:");
 	$error = error_get_last();
 	if($error===NULL) exit();
 	ErrorLogs::writeToLog("shutdown_error", $error['file'], $error['line'], $error_name[$error['type']]." , ".$error['message'], ErrorLogs::FATAL_ERROR);
@@ -269,7 +269,7 @@ function sendSorry($text = NULL){
 	
 	if($text==NULL) $text = "服务器奔溃了T_T..，稍后再试吧"; 
 	$msg = WxMsgFactory::$receivedMsg;
-	if($msg==null) exit();
+	if($msg==null) return;
 	$textTpl="<xml>
 			<ToUserName><![CDATA[".$msg->fromUserName."]]></ToUserName>
 			<FromUserName><![CDATA[".$msg->toUserName."]]></FromUserName> 

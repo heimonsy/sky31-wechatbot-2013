@@ -131,13 +131,13 @@ class Course
 				'username'=>$userName, 'password'=>$password,
 				'identity'=>'student', 'role'=>'1');
 		$ch->setPostArray($fields);
-		$str = iconv("GB2312", "UTF-8",
+		$str = iconv("GBK", "UTF-8//IGNORE",
 				$ch->post("http://202.197.224.134:8083/jwgl/logincheck.jsp"));
 		$code = $ch->getHttpCode()."";
 		if($code[0]=='2') {
 			if(strpos($str, "密码错误") == FALSE) {
 				$ch->post("http://202.197.224.134:8083/jwgl/index1.jsp");
-				$str = iconv("GB2312", "UTF-8",
+				$str = iconv("GBK", "UTF-8//IGNORE",
 						$ch->get("http://202.197.224.134:8083/jwgl/xk/xk1_kb_gr.jsp?xq1=01"));
 	
 			} else {

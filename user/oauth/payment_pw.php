@@ -7,7 +7,7 @@ require_once '../../core/include/common.php';
 
 if(isset($_POST['submit'])) {
 	if(!isset($_SESSION['uid'])) exit("ERROR");
-	$pw = Encodes::encode(@$_POST['pw']);
+	$pw = addslashes(Encodes::encode(@$_POST['pw']));
 	$uid = $_SESSION['uid'];
 	$sql = "update `stu_info`  set `cwpw`='{$pw}' where `uid`='{$uid}'";
 	$wxdb = MyDB::getWxdb();

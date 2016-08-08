@@ -108,7 +108,7 @@ class WxImageMsg extends WxBaseMsg
 class WxNewsMsg extends WxBaseMsg
 {
 	public $articleCount;
-	public $article;
+	public $newsItems;
 
 
 	public function __construct($toUserName, $fromUserName, $time, $funcFlag=0)
@@ -119,37 +119,37 @@ class WxNewsMsg extends WxBaseMsg
 	/**
 	 *  设置文本类型的消息
 	 */
-	public function setMsg($article)
+	public function setMsg($newsItems)
 	{
-		$this->article=$article;
-		$this->articleCount=count($article);
+		$this->newsItems = $newsItems;
+		$this->articleCount = count($newsItems);
 	}
 
 	public function  __toString()
 	{
 		$textTpl="<xml>
-			<ToUserName><![CDATA[".$this->toUserName."]]></ToUserName>
-			<FromUserName><![CDATA[".$this->fromUserName."]]></FromUserName> 
-			<CreateTime>".$this->time."</CreateTime>
-			<MsgType><![CDATA[".$this->msgType."]]></MsgType>
-			<ArticleCount>".$this->articleCount."</ArticleCount>
-			<Articles>";
+<ToUserName><![CDATA[".$this->toUserName."]]></ToUserName>
+<FromUserName><![CDATA[".$this->fromUserName."]]></FromUserName> 
+<CreateTime>".$this->time."</CreateTime>
+<MsgType><![CDATA[".$this->msgType."]]></MsgType>
+<ArticleCount>".$this->articleCount."</ArticleCount>
+<Articles>";
 
 		for($i=0;$i<$this->articleCount;$i++)
 		{
 			$textTpl.="
-				<item>
-				<Title><![CDATA[".$this->article[$i]->title."]]></Title>
-				<Description><![CDATA[".$this->article[$i]->description."]]></Description>
-				<PicUrl><![CDATA[".$this->article[$i]->picUrl."]]></PicUrl>
-				<Url><![CDATA[".$this->article[$i]->url."]]></Url>
-				</item>";
+<item>
+<Title><![CDATA[".$this->newsItems[$i]->title."]]></Title>
+<Description><![CDATA[".$this->newsItems[$i]->description."]]></Description>
+<PicUrl><![CDATA[".$this->newsItems[$i]->picUrl."]]></PicUrl>
+<Url><![CDATA[".$this->newsItems[$i]->url."]]></Url>
+</item>";
 		}
 
 		$textTpl.="
-			</Articles>
-			<FuncFlag>".$this->funcFlag."</FuncFlag>
-			</xml>";
+</Articles>
+<FuncFlag>".$this->funcFlag."</FuncFlag>
+</xml>";
 
 		return $textTpl;
 	}
@@ -241,6 +241,7 @@ class WxEventMSg extends WxBaseMsg
 {
 	public $event;
 	public $eventKey;
+	public $content;
 	
 	public function __construct($toUserName, $fromUserName, $time, $funcFlag=0)
 	{
@@ -254,6 +255,7 @@ class WxEventMSg extends WxBaseMsg
 	 */
 	public function setMsg( $event, $eventKey )
 	{
+		$this->content = $event;
 		$this->event = $event;
 		$this->eventKey = $eventKey;
 	}

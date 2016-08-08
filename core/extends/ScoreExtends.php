@@ -1,5 +1,4 @@
 <?php
-//include "../include/common.php";
 
 class ScoreExtends extends BaseExtends
 {
@@ -64,7 +63,7 @@ class ScoreExtends extends BaseExtends
 						$str.=($m[0]."【".substr($m[1],0,6)."】\n平时：".$m[3]." 考试：".$m[4]." 期评：".$m[5]."\n------------\n");
 					}
 					$oauth = Oauth::getOauth($uid);
-					return $str."<a href=\"http://wx.sky31.com/data/student/students.php?oa=$oauth\">点此查看排名</a>";
+					return $str."<a href=\"".WX_USER_URL."course/score.php?oa=$oauth\">点此查看排名</a>";
 					
 				} else 
 					return '密码错误哦（如果确定没有改过密码的话，可能是教务管理系统崩溃了T_T..）。\n如果已经改了密码，点击链接重新绑定：'.Oauth::getBindUrl($uid);

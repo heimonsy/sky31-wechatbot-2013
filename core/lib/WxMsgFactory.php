@@ -74,53 +74,52 @@ class WxMsgFactory
 		return self::$producedMsg;
 	}
 
-	public static function setNewsMsg($toUserName, $fromUserName, $time , $newsList)
+	public static function setNewsMsg($toUserName, $fromUserName, $time , $newsItems)
 	{
-		foreach ($newsList as $m)
-		{
-			$article[] = new WxNewsItem(
-					$m['title'],
-					$m['description'],
-					$m['pic_url'],
-					$m['src']
-			);
-		}
+
 		//$article[] = new WxNewsItem( "这是标题","这是描述","http://202.197.225.101/mobile/images/1.jpg","http://www.sky31.com" );
 		self::$producedMsg = new WxNewsMsg($toUserName, $fromUserName, $time);
-		self::$producedMsg->setMsg($article);
+		self::$producedMsg->setMsg($newsItems);
+		return self::$producedMsg;
 	}
 	
 	public static function setSingleNews($toUserName, $fromUserName, $time, $title, $description, $picUrl, $src)
 	{
 		$news = array( array('title'=>$title, 'description'=>$description, 'pic_url'=>$picUrl, 'src'=>$src) );
 		self::setNewsMsg($toUserName, $fromUserName, $time, $news);
+		return self::$producedMsg;
 	}
 
 	public static function setMusicMsg($toUserName, $fromUserName, $time ,$title, $description, $musicUrl, $HQMusicUrl)
 	{
 		self::$producedMsg = new WxMusicMsg($toUserName, $fromUserName, $time);
 		self::$producedMsg->setMsg($title, $description, $musicUrl, $HQMusicUrl);
+		return self::$producedMsg;
 	}
 
 	public static function setOtherMsg($toUserName, $fromUserName, $time, $textTpl, $postObj)
 	{
 		self::$producedMsg = new WxOtherMsg($toUserName, $fromUserName, $time);
 		self::$producedMsg->setMsg($textTpl, $postObj);
+		return self::$producedMsg;
 	}
 
 	public function setVoiceMsg($toUserName, $fromUserName, $time, $msgId){
 		self::$producedMsg = new WxVoiceMsg( $toUserName, $fromUserName, $time );
 		self::$producedMsg->setMsg( $msgId );
+		return self::$producedMsg;
 	}
 	
 	public static function setEventMsg( $toUserName, $fromUserName,$time, $event, $eventKey){
 		self::$producedMsg = new WxEventMSg($toUserName, $fromUserName, $time);
 		self::$producedMsg->setMsg( $event, $eventKey);
+		return self::$producedMsg;
 	}
 	
 	public static function setImageMsg( $toUserName, $fromUserName,$time, $picUrl) {
 		self::$producedMsg = new WxImageMsg($toUserName, $fromUserName, $time);
 		self::$producedMsg->setMsg($picUrl);
+		return self::$producedMsg;
 	}
 	
 	/**

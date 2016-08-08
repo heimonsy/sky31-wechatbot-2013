@@ -32,7 +32,7 @@ class PaymentCheckExtends extends BaseExtends
 			return $content;
 
 		} else 
-			return $content = "您还没有绑定个人信息，点击链接进行绑定：".Oauth::getBindUrl($this->user->uid);
+			return $content = "您还没有绑定个人信息，点击链接进行绑定：".Oauth::getBindUrl($uid);
 	}
 	
 	public static function getFromBB($stuNum, $pw){
@@ -75,7 +75,7 @@ class PaymentCheckExtends extends BaseExtends
 				$content.="欠交：".$m[1][6]."\n";
 				$pre = $m[1][0];
 			}
-			return $content."--------\n总学费为以上几项相加，在提示欠费时应尽快在绑定的建行卡上存入欠交的总学费，下年度学费信息在每年7月底8月初更新。";
+			return $content."--------\n总学费为以上几项相加，在提示欠费时应尽快在绑定的建行卡上存入欠交的总学费。\n缴费状态随时可查。";
 			//echo $str;
 				
 		} else
@@ -121,7 +121,7 @@ class PaymentCheckExtends extends BaseExtends
 				$content.="欠交：".$m[1][6]."\n";
 				$pre = $m[1][0];
 			}
-			return $content."--------\n总学费为以上几项相加，在提示欠费时应尽快在绑定的建行卡上存入欠交的总学费，下年度学费信息在每年7月底8月初更新。";
+			return $content."--------\n总学费为以上几项相加，在提示欠费时应尽快在绑定的建行卡上存入欠交的总学费。\n缴费状态随时可查。";
 			//echo $str;
 			
 		} else 

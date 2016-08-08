@@ -17,7 +17,7 @@ class CourseExtends extends BaseExtends
 		$bind = BindExtends::haveBind($this->user->uid);
 		if(!$bind) 
 			return "您还没有绑定个人信息，点击链接进行绑定：".Oauth::getBindUrl($this->user->uid);;
-		
+		//var_dump($matchs);
 		if( isset($matchs[1]) && $matchs[1]=='@' ) {
 			//更新课表
 			$errorInfo = "";
@@ -30,7 +30,7 @@ class CourseExtends extends BaseExtends
 				$content = "更新成功\n";
 				$content.= $this->getTodayCourses($this->user->uid, $bind);
 				$content.= "回复  @课表  更新课表信息\n";
-				$content.= "<a href=\"".ROOT_URL."data/course/course.php?oa=".Oauth::getOauth($this->user->uid)."\">查看所有课程</a>";
+				$content.= "<a href=\"".WX_USER_URL."course/course.php?oa=".Oauth::getOauth($this->user->uid)."\">查看所有课程</a>";
 				
 			} else
 				$content = "更新失败\n".Course::$error_info;
@@ -44,7 +44,7 @@ class CourseExtends extends BaseExtends
 				else {
 					$content  = $this->getTodayCourses($this->user->uid, $bind);
 					$content .= "回复  @课表  更新课表信息\n";
-					$content .= "<a href=\"".ROOT_URL."data/course/course.php?oa=".Oauth::getOauth($this->user->uid)."\">查看所有课程</a>";
+					$content .= "<a href=\"".WX_USER_URL."course/course.php?oa=".Oauth::getOauth($this->user->uid)."\">查看所有课程</a>";
 				}
 			}
 		}//matchs

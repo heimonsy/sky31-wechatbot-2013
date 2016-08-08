@@ -6,22 +6,22 @@ require_once '../../core/include/common.php';
 if(isset( $_POST['stuNum'])) {
 	if( isset( $_SESSION['uid'] )){
 		$uid      = $_SESSION['uid'];
-		$stuNum   = Encodes::encode( $_POST['stuNum'] );
-		$pw       = Encodes::encode( $_POST['pw'] );
+		$stuNum   = addslashes(Encodes::encode( $_POST['stuNum'] ));
+		$pw       = addslashes(Encodes::encode( $_POST['pw'] ));
 		$wxdb = MyDB::getWxdb();
 			
 		try{
 			$course = Course::getCourseFromXtu($_POST['stuNum'],  $_POST['pw'], $uid);
 			if($course) {
-				$name = Encodes::encode( $course['name']);
+				$name = addslashes(Encodes::encode( $course['name']));
 				Course::updateCourse($uid, $course['class']);
-				if( $_SESSION['haveBind'] )
+				if( $_SESSION['haveBind']==true )
 					$sql = "update `stu_info` set `name`='{$name}',`snum`='{$stuNum}', `pw`='{$pw}' where `uid`='{$uid}'";
 				else
 					$sql = "insert into `stu_info` (`uid`, `name`,`snum` ,`pw`) values ('{$uid}', '{$name}', '{$stuNum}', '{$pw}' )";
 				$r = $wxdb->query($sql);
 				if( !$r ) 
-					throw new CURDException("插入或新绑定信息失败", "服务器出错", mysql_error($wxdb->link)); 
+					throw new CURDException("插入或新绑定信息失败", "服务器出错", mysql_error($wxdb->link)."SQL: ".$sql); 
 				
 				$notice= "您的姓名：".Encodes::decode($name)."<br/>恭喜您绑定成功!<br/>你的课表已经采集，返回微信回复  <span style='color:red;'>课表</span> 查看今日的课表信息";
 				include 'oauth_2.tpl';
@@ -33,12 +33,12 @@ if(isset( $_POST['stuNum'])) {
 		}catch (CURDException $e){
 			
 			ErrorLogs::writeToLog($uid, $e->getFile(), $e->getLine(), "CURD错误：".$e->getMessage(), ErrorLogs::FATAL_ERROR);
-			$notice = "<font color='red'>$e->getMsgToUser()</font>";
+			$notice = "<font color='red'>".$e->getMsgToUser()."</font>";
 			include 'oauth_1.tpl';
 			
 		}catch (OtherException $e){
 			ErrorLogs::writeToLog($uid, $e->getFile(), $e->getLine(), "其他错误：".$e->getMessage(), ErrorLogs::FATAL_ERROR);
-			$notice = "<font color='red'>$e->getMsgToUser()</font>";
+			$notice = "<font color='red'>".$e->getMsgToUser()."</font>";
 			include 'oauth_1.tpl';
 		}
 		exit();
@@ -48,7 +48,7 @@ if(isset( $_POST['stuNum'])) {
 }
 
 
-if($_GET['oa']){
+if(isset($_GET['oa'])){
 	$oa = $_GET['oa'];
 	//判断oauth是否合法
 	if(Oauth::isOauth($oa) && $uid=Oauth::valid($oa) ){

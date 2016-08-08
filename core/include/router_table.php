@@ -7,6 +7,7 @@
 $ROUTER_TABLE[] = "CourseExtends";
 $ROUTER_TABLE[] = "ScoreExtends";
 $ROUTER_TABLE[] = "BindExtends";
+$ROUTER_TABLE[] = "NewStudentsExtends";
 //$ROUTER_TABLE[] = "TakeAwayFuncs";
 $ROUTER_TABLE[] = "WechatWall";
 $ROUTER_TABLE[] = "HelpExtends";
