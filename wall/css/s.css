@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ padding:0px; margin:0px; font-family:"微软雅黑";}
+ul li { list-style:none; display:block;}
+a img{ border:none; }
+
+a { color:#00F; text-decoration:none;}
+a:hover{ text-decoration:underline;}
+
+body {  background-color:#FFFAFA;}
+.nav_bg { height:58px; background-color:#4169E1;}
+.nav { height:58px; width:960px; margin:0 auto; line-height:58px; font-size:18px; font-weight:bold; color:#FFFFF0; overflow:hidden;}
+.nav .l { }
+.nav .m { font-size:26px; margin-left:190px;}
+
+.main_bg { height:auto; width:auto;}
+.main { height:auto; padding-top:28px; padding-bottom:28px; width:960px; margin:0 auto;overflow:hidden;}
+.main .title { height:34px; width:958px; line-height:34px; border:#CCC solid 1px; background-color:#FFF; text-indent:10px; font-size:16px;}
+
+.main .cnt { border:#CCC solid 1px; border-top:none; overflow:hidden; background-color:#FFF;}
+.main .cnt .left { float:left; width:192px; height:180px;}
+.main .cnt .left ul { padding-top:16px; font-size:14px;}
+.main .cnt .left ul li { height:26px; line-height:26px; text-indent:36px;}
+.main .cnt .left ul li a{ color:#000; text-decoration:none;}
+.main .cnt .left ul li a:hover{ color:#FFF; text-decoration:underline;}
+.main .cnt .left ul li:hover { background-color:#1AA0FF;}
+.main .cnt .left ul li.hover { height:26px; line-height:26px; background-color:#1E90FF;}
+.main .cnt .left ul li.hover a{ color:#FFF; }
+.main .cnt .right { width:765px; float:left; border-left:#CCC solid 1px; height:auto;}
+.main .cnt .r_t { height:32px; width:733px; margin:0 auto; padding-top:10px; line-height:32px; font-size:16px; padding-bottom:8px;}
+.pg_ud { height:38px; line-height:38px; width:733px; margin:0 auto; font-size:14px; text-align:right;}
+.pg_ud a { color:#4169E1;}
+.list_t { height: 24px; width:731px; margin:0 auto; background-color:#f1f1f1; line-height:24px; font-size:14px;  color:#222; border:1px solid #d3d3d3; border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px;}
+
+.list_t .msg { float:left; width:480px; padding-left:18px; overflow:hidden;}
+.list_t .time { float:left; width:120px;}
+.list_t .opt { float:left;}
+.main .cnt .right .blank { height:30px;}
+
+.list_msg { height:118px; width:703px; padding-left:15px; padding-right:15px; margin:0 auto; border-bottom:#CCC solid 1px;}
+.list_msg ._img { height:58px; width:58px; float:left; padding-top:18px;}
+.list_msg ._img  img { border:#CCC solid 1px;}
+.list_msg ._cont { margin-top:13px; height:96px; width:410px; float:left; font-size:14px; overflow:hidden; color:#000; padding-left:10px;}
+.list_msg ._cont ._name{ line-height:22px; height:22px; font-weight:bold;}
+.list_msg ._cont ._msgc{ height:auto; line-height:18px; overflow:hidden;}
+.list_msg ._time{ height:20px; float:left; width:40px; line-height:20px; padding-top:43px; font-size:14px; color:#888; padding-left:14px;}
+.list_msg ._opt { height:28px; float:left; width:28px; font-size:14px; color:#888; padding-left:75px; padding-top:35px; text-align:center; }
+#new_notice { height:auto; overflow:hidden; width:703px; margin:0 auto; background-color:#f4b7e3; text-align:center; font-size:14px; color:#777;}
+#new_notice a{color:#333; display:block; height:26px; width:703px; line-height:26px;}
+#new_notice a:hover{ text-decoration:none;}
+
+.bottom_bg { height:90px; background-color:#2f4f4f;}
+.bottom { height:90px; width:994px; margin:0 auto; overflow:hidden;}
+.logo { height:90px; padding-left:40px; padding-top:20px; height:56px; width:168px; float:left;}
+.cpy { float:left; padding-left:20px; font-size:16px; color:#FFF; margin-top:30px;}
+
+#msg_all { height:auto; overflow:hidden;}
+.jdt { height:32px; width:32px; margin:10px auto;}
+.clear_b{ height:430px; overflow:hidden; width:0px; float:left;}
