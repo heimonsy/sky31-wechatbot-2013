@@ -1,15 +1,22 @@
 <?php
 session_start();
+if( !(isset($_SESSION['admin']) && $_SESSION['admin']=="ADMIN" ))
+	exit("ERROR");
 require_once("../core/include/common.php");
 
 $wxdb = MyDB::getWxdb();
+
+
+
  
-if( isset($_GET['word']) )
+if( isset($_GET['subject_word']) )
 {
 	//alert($_GET['word']);
-	$word = $_GET['word'];
+	$word = $_GET['subject_word'];
 	$word = str_replace(' ', '', $word);
+	if($word == "") exit("error");
 	if( ($sid=WallExtends::getSubjectId($word))==NULL ){
+		
 		$time = time();
 		$sql = "insert into `wx_subject` 
 					(`sid`, `word`, `time`) 
@@ -60,7 +67,7 @@ a img { border:none;}
 <div class="title">话题定制</div>
 <div class="jinrixiangda">
 	<form action="" method="get">
-    	<input class="t_i" type="text" name="word" /><br />
+    	<input class="t_i" type="text" name="subject_word" value="" /><br />
         <input class="t_s" type="submit" name="submit" value="定制">
     </form>
 </div>
@@ -73,7 +80,7 @@ $r = $wxdb->query($sql);
 <?php
 while( ($m=mysql_fetch_assoc($r))!=NULL )
 {
-	echo "&nbsp;<a href=\"?word=".urlencode($m['word'])."\">".$m['word']."</a>&nbsp;&nbsp;";
+	echo "&nbsp;<a href=\"?subject_word=".urlencode($m['word'])."\">".$m['word']."</a>&nbsp;&nbsp;";
 }
 ?>
 </div>

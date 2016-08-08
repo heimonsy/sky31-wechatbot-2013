@@ -32,8 +32,12 @@ class WxService
 			//curl_setopt($ch, CURLOPT_TIMEOUT, 1);
 			//$str = curl_exec($ch);
 			//echo $str;
-			$fp = fsockopen('202.197.225.101', 80, $errno, $errmsg);
-			fputs($fp, "GET /wechat/user/cgi_bin/getuserinfo.php?mid=".$mid."\r\n\r\n");
+			$fp = fsockopen('wxuser.sky31.com', 80, $errno, $errmsg);
+			$cnt = "GET /cgi_bin/getuserinfo.php?mid=".$mid." HTTP/1.1\r\n";
+			$cnt.= "Host: wxuser.sky31.com\r\n\r\n";
+			fputs($fp, $cnt);
+			
+			//fputs($fp, "");
 			//echo $errno." ".$errmsg;
 			fclose($fp);
 		}

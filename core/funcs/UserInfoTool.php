@@ -97,6 +97,6 @@ class UserInfoTool
 	}
 	
 	public static function getHeadPic($uid) {
-		return "http://202.197.225.101/wechat/user/data/img_uh/".$uid.".jpg";
+		return WX_USER_URL."data/img_uh/".$uid.".jpg";
 	}
 }

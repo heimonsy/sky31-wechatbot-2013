@@ -13,3 +13,4 @@ $ROUTER_TABLE[] = "WallExtends";
 $ROUTER_TABLE[] = "HelpExtends";
 $ROUTER_TABLE[] = "WeatherExtends";
 $ROUTER_TABLE[] = "PaymentCheckExtends";
+$ROUTER_TABLE[] = "WallInfoExtends";

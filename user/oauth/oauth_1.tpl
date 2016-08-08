@@ -77,7 +77,7 @@
 	<div id="header">绑定您的学号
     </div>
     <div id="content">
-    	<div id="notice"><?php echo $notice; ?></div>
+    	<div id="notice"><?php echo $notice; ?> 教务管理系统初始密码为 666666</div>
         <div id="dfom">
         	<form action="" method="post">
 

@@ -1,11 +1,20 @@
 <?php
-
-echo $_SERVER['HTTP_USER_AGENT'];
-
-exit();
 session_start();
 require_once '../../core/include/common.php';
 
+error_reporting(E_ALL);
+
+$sql = "select `snum`,`name`,`pw` from `stu_info`";
+$wxdb = MyDB::getWxdb();
+$r =$wxdb->query($sql);
+if($r) {
+	while(($m=mysql_fetch_assoc($r))!=NULL) {
+		if(Encodes::decode($m['snum'])=="2011960509"){
+			echo Encodes::decode($m['name']);
+		}
+	}
+}else 
+	echo mysql_error();
 
 exit();
 $uid = 1695;

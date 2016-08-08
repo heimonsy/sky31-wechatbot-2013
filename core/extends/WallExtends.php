@@ -57,9 +57,9 @@ class WallExtends extends BaseExtends
 	public static function insertSubject($sname) {
 		$db =  MyDB::getWxdb();
 		$sql = "insert into `wx_subject` VALUES (NULL, '{$sname}')";
-		$r = $db->query($sql);
-		if(!$r)
-			throw new CURDException("wx_subject，插入话题失败, sname:".$sname, "话题发表失败，服务器内部错误T^T", mysql_error());
+		//$r = $db->query($sql);
+		//if(!$r)
+		//	throw new CURDException("wx_subject，插入话题失败, sname:".$sname, "话题发表失败，服务器内部错误T^T", mysql_error());
 			
 		$sid = mysql_insert_id($db->link);
 	}

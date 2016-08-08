@@ -10,9 +10,8 @@ if( !isset( $_GET['sid'] ) || !is_numeric($_GET['sid']) )
 $sid = $_GET['sid'];
 
 
-$max = getPageList(1, $sid, 1 , 40);
-if(count($max)>=30)
-	$max  = @$max[30]['rsid'];
+$max = getPageList(1, $sid, 1 ,40);
+$max  = @$max[30]['rsid'];
 
 $lastid = $_SESSION['lastid']= $max;
 if( $lastid==NULL ) $lastid=$_SESSION['lastid']=1;

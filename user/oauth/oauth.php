@@ -61,7 +61,7 @@ if(isset($_GET['oa'])){
 			$_SESSION['uid']=$uid;
 			$_SESSION['oa'] =$oa;
 			$_SESSION['haveBind'] =false;
-			$notice="请输入您的学号和密码<br />您的信息将被加密";
+			$notice="请输入您的学号和密码<br />";
 		}
 	}else{
 		echo "ERROR。非法OAUTH!";
