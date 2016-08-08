@@ -24,20 +24,19 @@ class WxService
 		//将接收到的消息添加到数据库
 		$mid = $this->addPostMsg($postStr);
 		$this->receivedMsgMid = $mid;
-		/*
+
 		if($this->user->fakeid == 0 && $this->receivedMsg->msgType == MSG_TEXT) {
-			$ch = curl_init( "http://wx.sky31.com/getuserinfo.php?mid=".$mid );
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
-			curl_setopt($ch, CURLOPT_TIMEOUT, 1);
-			$str = curl_exec($ch);
+			//$ch = curl_init( "http://wx.sky31.com/getuserinfo.php?mid=".$mid );
+			//curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			//curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
+			//curl_setopt($ch, CURLOPT_TIMEOUT, 1);
+			//$str = curl_exec($ch);
 			//echo $str;
-			//$fp = fsockopen('http://wx.sky31.com', 80, $errno, $errmsg);
-			//fputs($fp, "GET /getuserinfo.php?mid=".$mid."\r\n\r\n");
+			$fp = fsockopen('202.197.225.101', 80, $errno, $errmsg);
+			fputs($fp, "GET /wechat/user/cgi_bin/getuserinfo.php?mid=".$mid."\r\n\r\n");
 			//echo $errno." ".$errmsg;
-			//fclose($fp);
-			
-		}*/
+			fclose($fp);
+		}
 	}
 
 	/**

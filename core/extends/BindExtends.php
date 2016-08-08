@@ -43,9 +43,9 @@ class BindExtends extends BaseExtends
 			else
 				return false;
 		}else
-			throw new OtherException(
-					"获取用户绑定信息失败", 
-					"服务器内部错误。T_T...");
+			throw new CURDException(
+					"获取用户绑定信息失败,", 
+					"服务器内部错误。T_T...", addslashes(mysql_error($wxdb->link)));
 			
 	}
 	

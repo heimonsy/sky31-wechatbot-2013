@@ -25,7 +25,7 @@ private $helpInfo = "翼宝很高兴能为小伙伴服务。翼宝伴你左右�
 回复 帮助 获取帮助消息。"; 
 	
 	public static function getKeyWordPatterns() {
-		return "/^(帮助|h|help|subscribe)$/i";
+		return "/^(帮助|h|help)$/i";
 	}
 	
 	public function analyse($matchs=NULL) {

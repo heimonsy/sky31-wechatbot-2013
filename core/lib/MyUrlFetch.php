@@ -76,4 +76,10 @@ class MyUrlFetch
 		curl_close($this->ch);
 	}
 	
+	public function setSSL(){
+		curl_setopt($this->ch, CURLOPT_HEADER, true);
+		curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($this->ch, CURLOPT_SSL_VERIFYHOST, false);
+	}
+	
 }

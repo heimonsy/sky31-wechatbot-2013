@@ -16,35 +16,37 @@ class CourseExtends extends BaseExtends
 	{
 		$bind = BindExtends::haveBind($this->user->uid);
 		if(!$bind) 
-			return "您还没有绑定个人信息，点击链接进行绑定：".Oauth::getBindUrl($this->user->uid);;
+			$content = "您还没有绑定个人信息，点击链接进行绑定：".Oauth::getBindUrl($this->user->uid);
 		//var_dump($matchs);
-		if( isset($matchs[1]) && $matchs[1]=='@' ) {
-			//更新课表
-			$errorInfo = "";
-			$bind   = BindExtends::haveBind($this->user->uid);
-			
-			$course = Course::getCourseFromXtu(
-					Encodes::decode($bind['snum']), Encodes::decode($bind['pw']), $this->user->uid);
-			if($course) {
-				Course::updateCourse($this->user->uid, $course['class']);
-				$content = "更新成功\n";
-				$content.= $this->getTodayCourses($this->user->uid, $bind);
-				$content.= "回复  @课表  更新课表信息\n";
-				$content.= "<a href=\"".WX_USER_URL."course/course.php?oa=".Oauth::getOauth($this->user->uid)."\">查看所有课程</a>";
+		else {
+			if( isset($matchs[1]) && $matchs[1]=='@' ) {
+				//更新课表
+				$errorInfo = "";
+				$bind   = BindExtends::haveBind($this->user->uid);
 				
-			} else
-				$content = "更新失败\n".Course::$error_info;
+				$course = Course::getCourseFromXtu(
+						Encodes::decode($bind['snum']), Encodes::decode($bind['pw']), $this->user->uid);
+				if($course) {
+					Course::updateCourse($this->user->uid, $course['class']);
+					$content = "更新成功\n";
+					$content.= $this->getTodayCourses($this->user->uid, $bind);
+					$content.= "回复  @课表  更新课表信息\n";
+					$content.= "<a href=\"".WX_USER_URL."course/course.php?oa=".Oauth::getOauth($this->user->uid)."\">查看所有课程</a>";
+					
+				} else
+					$content = "更新失败\n".Course::$error_info;
 				
-		}else {
-			//直接获取课表
-			
-			if( $bind ){
-				if(!Course::haveInsertCourse($this->user->uid))
-					$content = "您还没有更新过课表哦，回复`@课表`即可更新课表。\n如果长时间没有响应(教务管理系统，你懂的),回复`课表`再试一次。";
-				else {
-					$content  = $this->getTodayCourses($this->user->uid, $bind);
-					$content .= "回复  @课表  更新课表信息\n";
-					$content .= "<a href=\"".WX_USER_URL."course/course.php?oa=".Oauth::getOauth($this->user->uid)."\">查看所有课程</a>";
+			}else {
+				//直接获取课表
+				
+				if( $bind ){
+					if(!Course::haveInsertCourse($this->user->uid))
+						$content = "您还没有更新过课表哦，回复`@课表`即可更新课表。\n如果长时间没有响应(教务管理系统，你懂的),回复`课表`再试一次。";
+					else {
+						$content  = $this->getTodayCourses($this->user->uid, $bind);
+						$content .= "回复  @课表  更新课表信息\n";
+						$content .= "<a href=\"".WX_USER_URL."course/course.php?oa=".Oauth::getOauth($this->user->uid)."\">查看所有课程</a>";
+					}
 				}
 			}
 		}//matchs
@@ -55,7 +57,8 @@ class CourseExtends extends BaseExtends
 				time(),
 				$content
 			);
-		
+			
+		return $this->responseMsg;
 	}
 	
 	/**

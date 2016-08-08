@@ -66,10 +66,10 @@ define( "TRANSLATION_REG" , '/#\040?(.*)/i' );
 define( "BIND_REG" , '/^绑定$/i' );
 
 
-define( "SKY31_USERNAME" , "ceo@sky31.com" );
-define( "SKY31_PW"       , "595568ec41c753e222ab34211e531b35");
+define( "SKY31_USERNAME" , "250661062@qq.com" );
+define( "SKY31_PW"       , "7cf5bc49b333fe77af16b0aeeb351eaa");
 
-$wxdb_config = array( "host"=>"localhost", "root"=>"root","password"=>"NIUBSky3!.com", "dbname" => "wx_db");
+$wxdb_config = array( "host"=>"localhost", "root"=>"root","password"=>"", "dbname" => "wx_db");
 
 $web_config = array( "host"=>"http://wx.sky31.com/" ,"admin_path"=>"http://wx.sky31.com/mpadmin/");
 
@@ -78,3 +78,4 @@ define("ROOT_URL", "http://wxxrs.sky31.com/");
 define("OAUTH_URL", "http://wxuser.sky31.com/oauth/oauth.php");
 define("CW_OAUTH_URL", "http://wxuser.sky31.com/oauth/payment_pw.php");
 define("WX_USER_URL", "http://wxuser.sky31.com/");
+define("CGI_BIN_GETUSERINFO", "http://202.197.225.101/getinfo.php");

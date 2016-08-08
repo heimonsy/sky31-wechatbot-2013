@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>三翼校园微信墙</title>
+
+<link href="weixin/css/index.css" type=text/css rel=stylesheet>
+<script type="text/javascript">
+var sid=<?php echo $sid; ?>;
+var lastid=<?php echo $lastid; ?>
+</script>
+
+<script src="weixin/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="weixin/js/tqq.js" type="text/javascript"></script>
+
+<script id="json-msgList" type="json/text">
+<?php echo json_encode($msgList); ?>
+</script>
+</head>
+<body>
+<div class="all">
+    <div class="top">
+    	<div class="erw"><a href="#" onclick="showEw()"></a></div>
+    	<div class="intro">上墙方式：发送 <span class="w">#<?php echo $word;?>#</span> 加你要说的内容发送到 湘潭大学三翼校园(微信号：<span class="w">isky31</span>)</div>
+		<div id="draw">
+			<a href="#" onclick="return change()"></a>
+		</div>
+    </div>
+    <div class="down">
+		<div id="weixin" class="mF_sd_tqq">
+        <!--
+        <div class="er_img">
+        	<a href="#" onclick="backto()"><img src="../images/erwei.jpg" /></a>
+            <div class="wxhhh">微信号：isky31</div>
+        </div>
+        -->
+        
+
+        
+		  <div class="msgs">
+		  <!--
+			<li>
+			  <div class="img"><img src="../images/1.gif" width="140" height="140"/></div>
+			  <div class="msg">
+				<p><b>三翼校园</b>　3月29日下午，由第十二届全国政协委员，湘潭大学副校长刘长庚教授主讲的青马工程大学生素质拓展报告会在逸夫一报举行。</p>
+				<p class="time">发布于<span>2013-01-01</span></p>
+			  </div>
+			</li>
+			-->
+
+		  </div>
+		</div>
+	</div>
+    <div class="end">
+    	Copyright © 2004-2013 湘潭大学三翼工作室 All Right Reserved 
+    </div>
+</div>
+</body>
+</html>

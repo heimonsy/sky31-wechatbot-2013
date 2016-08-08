@@ -4,6 +4,7 @@ header("Cache-Control: no-cache");
 date_default_timezone_set('PRC');
 define('BASE_PATH', str_replace("\\", '/', substr(__FILE__, 0, -18)));
 define("PIC_PATH",  BASE_PATH."data/pic/");
+define("USER_DATA_PATH", BASE_PATH."../user/data/");
 require_once "config.php";
 require_once 'router_table.php';
 
@@ -41,7 +42,7 @@ require_once BASE_PATH."lib/CURDException.php";
  *
  *************************************/
 require_once BASE_PATH."funcs/Course.php";
-
+require_once BASE_PATH."funcs/UserInfoTool.php";
 
 /*************************************
  * 

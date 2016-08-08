@@ -54,7 +54,10 @@ class WxUser
 	function setStatus($status) {
 		$wxdb = MyDB::getWxdb();
 		$sql = "UPDATE  `wx_user` SET `stat`='{$status}' WHERE `uid`={$this->uid} ";
-		$wxdb->query($sql);
+		$r = $wxdb->query($sql);
+		if(!$r)
+			throw new CURDException(
+					"设置用户状态失败，wx_user ,", NULL, mysql_error());
 	}
 
 	public static function addUser($userName) {

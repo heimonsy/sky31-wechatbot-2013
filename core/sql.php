@@ -1,2 +1,6 @@
-<?php
-CREATE TABLE `wx_db`.`wx_logs` (`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, `files` VARCHAR(126) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `line` INT(6) NOT NULL, `msg` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `code` INT(3) NOT NULL, `time` INT NOT NULL) ENGINE = InnoDB;
+
+CREATE TABLE `wx_db`.`get_info_logs` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+`uid` INT  NOT NULL,
+`status` INT(2) NOT NULL 
+) ENGINE = InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
